@@ -1,0 +1,18 @@
+# MkDocs のビルド結果
+site/
+
+# merge_md.py の出力
+output/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# OS / エディタ
+.DS_Store
+Thumbs.db
+desktop.ini
+.vscode/
+.idea/
