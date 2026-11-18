@@ -1,16 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-docs/ 以下の Markdown ファイルの表記ゆれ修正・構文チェックを行うスクリプト。
+docs/ 以下の Markdown ファイルの表記ゆれ修正・リスト整形・構文チェックを行うスクリプト。
 
 使い方（リポジトリのルートで実行）:
-    python scripts/fix_md.py              # 全テーマの自動修正（\boldsymbol置換・$$前後の空行調整）＋ 構文チェック
+    python scripts/fix_md.py              # 全テーマの自動修正 ＋ 構文チェック
     python scripts/fix_md.py iitaka       # 指定したテーマだけ実行
     python scripts/fix_md.py --check-only # ファイルを書き換えずにチェックだけ行う
 
 自動修正する内容:
   1. \boldsymbol → \mathbf への一括置換
   2. 独立行のディスプレイ数式 $$...$$ の前後に空行がない場合、空行を挿入（引用ブロック `> ` 内にも対応）
+  3. 箇条書き（`* ` や `1. `）の直前の行が非空行でリスト項目でない場合や、インデントされた段落の直後に
+     別レベルのリスト項目が続くことで Python-Markdown がリストとして認識できない箇所に自動で空行を補完
 
 警告（チェック）する内容:
   - 1行の中で太字記号 `**` の個数が奇数（片割れ・閉じ忘れ）になっている箇所を行番号付きで表示
@@ -28,6 +30,8 @@ EXCLUDE_DIRS = {"javascripts", "stylesheets", "assets", "images"}
 
 # 単一行のディスプレイ数式: 任意の `> ` プレフィックス + $$...$$
 SINGLE_LINE_DISPLAY_MATH_RE = re.compile(r"^(\s*(?:>\s*)*)\$\$(.+)\$\$\s*$")
+# リスト項目の行: 任意の `> ` プレフィックス + インデント + (`* ` or `- ` or `1. `)
+LIST_ITEM_RE = re.compile(r"^((?:>\s*)*)(\s*)(?:[\*\-]\s+|\d+\.\s+)")
 # 数式内の ** (例: V^{**}) を除外するためのパターン
 MATH_SPAN_RE = re.compile(r"\$\$[\s\S]*?\$\$|\$[^$\n]+\$")
 CODE_SPAN_RE = re.compile(r"`[^`\n]+`")
@@ -56,14 +60,12 @@ def ensure_blank_lines_around_display_math(text: str) -> tuple[str, int]:
         m = SINGLE_LINE_DISPLAY_MATH_RE.match(line)
         if m:
             prefix = m.group(1).rstrip()
-            # 前の行が空行（または同じ引用レベルの空行）でなければ挿入
             if out:
                 prev = out[-1].strip()
                 if prev != "" and prev != ">":
                     out.append(prefix)
                     added += 1
             out.append(line)
-            # 次の行が空行でなければ挿入
             if i + 1 < len(lines):
                 nxt = lines[i + 1].strip()
                 if nxt != "" and nxt != ">":
@@ -71,6 +73,55 @@ def ensure_blank_lines_around_display_math(text: str) -> tuple[str, int]:
                     added += 1
         else:
             out.append(line)
+
+    result = "\n".join(out)
+    if text.endswith("\n"):
+        result += "\n"
+    return result, added
+
+
+def ensure_blank_lines_before_lists(text: str) -> tuple[str, int]:
+    """
+    Python-Markdown でリスト項目 (`* ` や `1. `) が直前の段落に吸収されてしまうのを防ぐため、
+    必要な箇所に空行を挿入する。
+    """
+    lines = text.splitlines()
+    out: list[str] = []
+    added = 0
+    in_code_block = False
+
+    for line in lines:
+        if line.strip().startswith("```"):
+            in_code_block = not in_code_block
+            out.append(line)
+            continue
+        if in_code_block:
+            out.append(line)
+            continue
+
+        m = LIST_ITEM_RE.match(line)
+        if m and out:
+            quote_prefix = m.group(1).rstrip()
+            curr_indent = len(m.group(2))
+            prev_line = out[-1]
+            prev_stripped = prev_line.strip()
+
+            # 前の行が空行でなく、見出しでも引用開始だけの行でもない場合
+            if prev_stripped != "" and prev_stripped != ">":
+                prev_m = LIST_ITEM_RE.match(prev_line)
+                if not prev_m:
+                    # 前の行が通常のテキスト行（リスト継続段落など）のとき、空行を入れる
+                    out.append(quote_prefix)
+                    added += 1
+                else:
+                    # 前の行もリスト項目だが、インデントが深くなる（ネスト開始）または浅くなるとき、
+                    # Python-Markdown はネスト開始前に空行を要求する場合がある
+                    prev_indent = len(prev_m.group(2))
+                    if curr_indent != prev_indent:
+                        out.append(quote_prefix)
+                        added += 1
+
+        out.append(line)
 
     result = "\n".join(out)
     if text.endswith("\n"):
@@ -90,7 +141,6 @@ def find_unmatched_bold_lines(text: str) -> list[tuple[int, str]]:
         if in_code_block:
             continue
 
-        # 数式とインラインコードを除去してから ** の個数を数える
         cleaned = MATH_SPAN_RE.sub("", line)
         cleaned = CODE_SPAN_RE.sub("", cleaned)
         count = cleaned.count("**")
@@ -100,10 +150,10 @@ def find_unmatched_bold_lines(text: str) -> list[tuple[int, str]]:
     return warnings
 
 
-def process_file(path: Path, check_only: bool = False) -> tuple[int, int, list[tuple[int, str]]]:
+def process_file(path: Path, check_only: bool = False) -> tuple[int, int, int, list[tuple[int, str]]]:
     original = path.read_text(encoding="utf-8")
     if not original:
-        return 0, 0, []
+        return 0, 0, 0, []
 
     # 1. \boldsymbol -> \mathbf
     bs_count = len(re.findall(r"\\boldsymbol\b", original))
@@ -112,12 +162,15 @@ def process_file(path: Path, check_only: bool = False) -> tuple[int, int, list[t
     # 2. $$...$$ 前後の空行確保
     updated, math_blank_count = ensure_blank_lines_around_display_math(updated)
 
+    # 3. リスト項目直前の空行確保
+    updated, list_blank_count = ensure_blank_lines_before_lists(updated)
+
     if not check_only and updated != original:
         path.write_text(updated, encoding="utf-8")
 
-    # 3. ** の片割れチェック
+    # 4. ** の片割れチェック
     warnings = find_unmatched_bold_lines(updated)
-    return bs_count, math_blank_count, warnings
+    return bs_count, math_blank_count, list_blank_count, warnings
 
 
 def main() -> None:
@@ -129,23 +182,29 @@ def main() -> None:
     files = iter_md_files(args.themes)
     total_bs = 0
     total_math_blanks = 0
+    total_list_blanks = 0
     total_warnings = 0
     modified_files = 0
 
     for md_path in files:
-        bs_count, math_blank_count, warnings = process_file(md_path, check_only=args.check_only)
+        bs_count, math_blank_count, list_blank_count, warnings = process_file(
+            md_path, check_only=args.check_only
+        )
         rel = md_path.relative_to(ROOT_DIR).as_posix()
 
-        if bs_count or math_blank_count:
+        if bs_count or math_blank_count or list_blank_count:
             modified_files += 1
             total_bs += bs_count
             total_math_blanks += math_blank_count
+            total_list_blanks += list_blank_count
             action = "検出" if args.check_only else "修正"
             details = []
             if bs_count:
                 details.append(f"\\boldsymbol→\\mathbf: {bs_count}箇所")
             if math_blank_count:
                 details.append(f"$$前後の空行追加: {math_blank_count}行")
+            if list_blank_count:
+                details.append(f"リスト前空行追加: {list_blank_count}行")
             print(f"[{action}] {rel} ({', '.join(details)})")
 
         if warnings:
@@ -157,7 +216,7 @@ def main() -> None:
     print("-" * 60)
     print(
         f"完了: 対象 {len(files)} ファイル / "
-        f"修正 {modified_files} ファイル (\\boldsymbol置換 {total_bs}件, $$空行補完 {total_math_blanks}件) / "
+        f"修正 {modified_files} ファイル (\\boldsymbol置換 {total_bs}件, $$空行補完 {total_math_blanks}件, リスト空行補完 {total_list_blanks}件) / "
         f"太字(`**`)片割れ警告 {total_warnings}件"
     )
 

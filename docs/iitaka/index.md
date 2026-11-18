@@ -1,5 +1,27 @@
 ### 飯高次元・飯高予想に至る体系的カリキュラム（全7部）
 
+> **このノートの最終目標（飯高次元・小平次元・飯高予想の概要）**
+>
+> 滑らかな射影代数多様体 $X$ とその上の因子 $D$ に対し、$m$ 倍の因子 $mD$ に付随する直線束の大域切断の空間（ベクトル空間）を $H^0(X, \mathcal{O}_X(mD))$、その次元を $h^0(X, \mathcal{O}_X(mD)) := \dim_{\mathbb{C}} H^0(X, \mathcal{O}_X(mD))$ と書きます。
+>
+> 1. **飯高次元 $\kappa(X, D)$ の3つの等価な定義：**
+>     切断が存在する自然数の集合を $N(X, D) := \{ m \in \mathbb{Z}_{>0} \mid h^0(X, \mathcal{O}_X(mD)) > 0 \}$ とします（$N(X, D) = \emptyset$ のときは $\kappa(X, D) := -\infty$）。$N(X, D) \neq \emptyset$ のとき、次の3つの値はすべて一致し、これを $D$ の**飯高次元（Iitaka dimension）$\kappa(X, D)$** と呼びます（とり得る値は $-\infty, 0, 1, \dots, \dim X$）。
+>
+>     * **射影空間への像の最大次元：** $H^0(X, \mathcal{O}_X(mD))$ の基底 $s_0, \dots, s_N$ を並べて得られる有理写像 $\Phi_{\vert{}mD\vert{}}: X \dashrightarrow \mathbb{P}^N, \; x \mapsto [s_0(x) : \dots : s_N(x)]$ の像の次元の最大値 $\max_{m \in N(X, D)} \dim \Phi_{\vert{}mD\vert{}}(X)$
+>     * **切断空間の次元の多項式増大度：** $m \in N(X, D)$ を大きくしたとき、$h^0(X, \mathcal{O}_X(mD)) \sim c \cdot m^\kappa$ と増大する次数 $\kappa$
+>     * **切断環の超越次数：** 切断環 $R(X, D) := \bigoplus_{m \ge 0} H^0(X, \mathcal{O}_X(mD))$ の商体の超越次数から $1$ を引いた値 $\operatorname{tr.deg}_{\mathbb{C}} \operatorname{Frac} R(X, D) - 1$
+> 2. **小平次元 $\kappa(X)$：**
+>     多様体 $X$ の最高次微分形式の束である**標準束 $\omega_X$（標準因子 $K_X$）**に対する飯高次元 $\kappa(X) := \kappa(X, K_X)$ を、$X$ の**小平次元（Kodaira dimension）**と呼びます。これは双有理同値で不変な多様体の基本分類指標となります。
+>
+> 3. **飯高予想（$C_{n, m}$ 予想）：**
+>     滑らかな射影多様体の間の全射な射（代数ファイバー空間）$f: X \to Y$（$\dim X = n, \dim Y = m$）と、その一般ファイバー $F = f^{-1}(y)$（$\dim F = n - m$）に対して、小平次元の加法性不等式
+>
+>     $$\kappa(X) \ge \kappa(Y) + \kappa(F)$$
+>
+>     が成り立つという予想です。本カリキュラムでは、第0部〜第5部でこの式のすべての記号と背景理論を1つずつ構築し、第6部で飯高理論と飯高予想の核心に到達します。
+
+---
+
 #### 第0部：線形代数と微積分の再構築（既習事項の捉え直し）
 
 計算手続きとして学んだ学部1・2年の数学を、「空間と写像の構造」という視点で定義し直します。
