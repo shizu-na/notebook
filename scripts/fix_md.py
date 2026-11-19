@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
+r"""
 docs/ 以下の Markdown ファイルの表記ゆれ修正・リスト整形・構文チェックを行うスクリプト。
 
 使い方（リポジトリのルートで実行）:
@@ -10,8 +10,9 @@ docs/ 以下の Markdown ファイルの表記ゆれ修正・リスト整形・�
 
 自動修正する内容:
   1. \boldsymbol → \mathbf への一括置換
-  2. 独立行のディスプレイ数式 $$...$$ の前後に空行がない場合、空行を挿入（引用ブロック `> ` 内にも対応）
-  3. 箇条書き（`* ` や `1. `）の直前の行が非空行でリスト項目でない場合や、インデントされた段落の直後に
+  2. \xleftrightarrow{...} → \overset{...}{\longleftrightarrow} への一括置換
+  3. 独立行のディスプレイ数式 $$...$$ の前後に空行がない場合、空行を挿入（引用ブロック `> ` 内にも対応）
+  4. 箇条書き（`* ` や `1. `）の直前の行が非空行でリスト項目でない場合や、インデントされた段落の直後に
      別レベルのリスト項目が続くことで Python-Markdown がリストとして認識できない箇所に自動で空行を補完
 
 警告（チェック）する内容:
@@ -150,27 +151,34 @@ def find_unmatched_bold_lines(text: str) -> list[tuple[int, str]]:
     return warnings
 
 
-def process_file(path: Path, check_only: bool = False) -> tuple[int, int, int, list[tuple[int, str]]]:
+def process_file(path: Path, check_only: bool = False) -> tuple[int, int, int, int, list[tuple[int, str]]]:
     original = path.read_text(encoding="utf-8")
     if not original:
-        return 0, 0, 0, []
+        return 0, 0, 0, 0, []
 
     # 1. \boldsymbol -> \mathbf
     bs_count = len(re.findall(r"\\boldsymbol\b", original))
     updated = re.sub(r"\\boldsymbol\b", r"\\mathbf", original)
 
-    # 2. $$...$$ 前後の空行確保
+    # 2. \xleftrightarrow{...} -> \overset{...}{\longleftrightarrow}
+    updated, xlra_count = re.subn(
+        r"\\xleftrightarrow\{([^{}]*)\}",
+        r"\\overset{\1}{\\longleftrightarrow}",
+        updated,
+    )
+
+    # 3. $$...$$ 前後の空行確保
     updated, math_blank_count = ensure_blank_lines_around_display_math(updated)
 
-    # 3. リスト項目直前の空行確保
+    # 4. リスト項目直前の空行確保
     updated, list_blank_count = ensure_blank_lines_before_lists(updated)
 
     if not check_only and updated != original:
         path.write_text(updated, encoding="utf-8")
 
-    # 4. ** の片割れチェック
+    # 5. ** の片割れチェック
     warnings = find_unmatched_bold_lines(updated)
-    return bs_count, math_blank_count, list_blank_count, warnings
+    return bs_count, xlra_count, math_blank_count, list_blank_count, warnings
 
 
 def main() -> None:
@@ -181,26 +189,30 @@ def main() -> None:
 
     files = iter_md_files(args.themes)
     total_bs = 0
+    total_xlra = 0
     total_math_blanks = 0
     total_list_blanks = 0
     total_warnings = 0
     modified_files = 0
 
     for md_path in files:
-        bs_count, math_blank_count, list_blank_count, warnings = process_file(
+        bs_count, xlra_count, math_blank_count, list_blank_count, warnings = process_file(
             md_path, check_only=args.check_only
         )
         rel = md_path.relative_to(ROOT_DIR).as_posix()
 
-        if bs_count or math_blank_count or list_blank_count:
+        if bs_count or xlra_count or math_blank_count or list_blank_count:
             modified_files += 1
             total_bs += bs_count
+            total_xlra += xlra_count
             total_math_blanks += math_blank_count
             total_list_blanks += list_blank_count
             action = "検出" if args.check_only else "修正"
             details = []
             if bs_count:
                 details.append(f"\\boldsymbol→\\mathbf: {bs_count}箇所")
+            if xlra_count:
+                details.append(f"\\xleftrightarrow置換: {xlra_count}箇所")
             if math_blank_count:
                 details.append(f"$$前後の空行追加: {math_blank_count}行")
             if list_blank_count:
@@ -216,7 +228,8 @@ def main() -> None:
     print("-" * 60)
     print(
         f"完了: 対象 {len(files)} ファイル / "
-        f"修正 {modified_files} ファイル (\\boldsymbol置換 {total_bs}件, $$空行補完 {total_math_blanks}件, リスト空行補完 {total_list_blanks}件) / "
+        f"修正 {modified_files} ファイル (\\boldsymbol置換 {total_bs}件, \\xleftrightarrow置換 {total_xlra}件, "
+        f"$$空行補完 {total_math_blanks}件, リスト空行補完 {total_list_blanks}件) / "
         f"太字(`**`)片割れ警告 {total_warnings}件"
     )
 
