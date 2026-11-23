@@ -162,17 +162,16 @@ nav:
           - 2-5. キャッシュ・フロー計算書と財務分析: finance-law-math/2/2-5.md
           - 2-6. 連結会計・外貨建取引と企業結合: finance-law-math/2/2-6.md
       - 第3部 法学の基礎:
-          - 3-1. 法解釈の技法と民法の基本原則: finance-law-math/3/3-1.md
-          - 3-2. 権利能力・意思表示と契約の効力: finance-law-math/3/3-2.md
-          - 3-3. 代理と時効: finance-law-math/3/3-3.md
-          - 3-4. 物権と債権、対抗要件（登記）と共有: finance-law-math/3/3-4.md
-          - 3-5. 担保物権（抵当権）と保証・連帯債務: finance-law-math/3/3-5.md
-          - 3-6. 強制執行と倒産法の基礎（破産・再生・更生と倒産隔離）: finance-law-math/3/3-6.md
-          - 3-7. 債務不履行と不法行為責任: finance-law-math/3/3-7.md
-          - 3-8. 消費者保護法と金融規制（消費者契約法・金融商品取引法）: finance-law-math/3/3-8.md
-          - 3-9. 株式会社の構造とコーポレートガバナンス（会社法Ⅰ）: finance-law-math/3/3-9.md
-          - 3-10. 会社の計算・財源規制と資金調達（会社法Ⅱ）: finance-law-math/3/3-10.md
-          - 3-11. 行政法の基礎（許認可・通達・計画・調査）: finance-law-math/3/3-11.md
+          - 3-1. 法体系・民法総則・権利義務の構造: finance-law-math/3/3-1.md
+          - 3-2. 契約・債権債務と債務不履行・不法行為: finance-law-math/3/3-2.md
+          - 3-3. 債権の担保・保証・相殺・債権譲渡: finance-law-math/3/3-3.md
+          - 3-4. 物権・所有権・登記・抵当権: finance-law-math/3/3-4.md
+          - 3-5. 家族法・相続・遺言・信託の基礎: finance-law-math/3/3-5.md
+          - 3-6. 民事紛争の解決と倒産法: finance-law-math/3/3-6.md
+          - 3-7. 労働法・知的財産法・個人情報保護法: finance-law-math/3/3-7.md
+          - 3-8. 消費者保護法・金融商品取引法: finance-law-math/3/3-8.md
+          - 3-9. 会社法とコーポレート・ガバナンス: finance-law-math/3/3-9.md
+          - 3-10. 行政法の基礎（許認可・通達・計画・調査）: finance-law-math/3/3-10.md
       - 第4部 租税法とタックスプランニング:
           - 4-1. 租税法律主義と所得税の関数構造: finance-law-math/4/4-1.md
           - 4-2. 10種類の所得と損益通算・繰越控除: finance-law-math/4/4-2.md
