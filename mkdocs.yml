@@ -136,3 +136,77 @@ nav:
           - 6-1. 円の裏返しと球面の裏返し: seeing-4d/6/6-1.md
           - 6-2. 3次元の結び目と4次元での解消: seeing-4d/6/6-2.md
           - 6-3. 3次元多様体の貼り合わせと4次元の特異性: seeing-4d/6/6-3.md
+  - 会計・法務・金融の数理:
+      - finance-law-math/index.md
+      - 第0部 共通の数理OS:
+          - 0-1. お金の時間価値・FP「6つの係数」・住宅ローンの数理: finance-law-math/0/0-1.md
+          - 0-2. 確率空間・条件付確率・ベイズの定理: finance-law-math/0/0-2.md
+          - 0-3. 確率変数と主要分布の地図: finance-law-math/0/0-3.md
+          - 0-4. 積率母関数・極限定理と統計的推定・仮説検定: finance-law-math/0/0-4.md
+          - 0-5. 回帰分析・因果推論と多変量解析の基礎: finance-law-math/0/0-5.md
+          - 0-6. 数理最適化とモンテカルロ・シミュレーション: finance-law-math/0/0-6.md
+      - 第1部 経済と市場のメカニズム:
+          - 1-1. 消費者行動・生産者行動と市場均衡（ミクロ経済学）: finance-law-math/1/1-1.md
+          - 1-2. 市場の失敗と情報の非対称性: finance-law-math/1/1-2.md
+          - 1-3. マクロ経済と金利・物価の決定: finance-law-math/1/1-3.md
+          - 1-4. 外国為替と国際金融: finance-law-math/1/1-4.md
+          - 1-5. 金融システムと証券市場の構造: finance-law-math/1/1-5.md
+      - 第2部 会計と複式簿記のロジック:
+          - 2-1. 複式簿記の原理・簿記一巡と代数構造: finance-law-math/2/2-1.md
+          - 2-2. 決済・債権・商品売買の会計（2027年新基準対応）: finance-law-math/2/2-2.md
+          - 2-3. 固定資産・減価償却と新リース会計基準: finance-law-math/2/2-3.md
+          - 2-4. 発生主義・決算整理・引当金・税効果会計: finance-law-math/2/2-4.md
+          - 2-5. キャッシュ・フロー計算書と財務分析: finance-law-math/2/2-5.md
+          - 2-6. 株式会社会計・連結会計とIFRSの視点: finance-law-math/2/2-6.md
+      - 第3部 法学の共通OS:
+          - 3-1. 法解釈の技法と民法の基本原則: finance-law-math/3/3-1.md
+          - 3-2. 権利能力・意思表示と契約の効力: finance-law-math/3/3-2.md
+          - 3-3. 代理と時効のメカニズム: finance-law-math/3/3-3.md
+          - 3-4. 物権と債権、対抗要件（登記）と共有: finance-law-math/3/3-4.md
+          - 3-5. 担保物権（抵当権）と債権回収・倒産法の基礎: finance-law-math/3/3-5.md
+          - 3-6. 債務不履行・不法行為と消費者保護・業法の構造: finance-law-math/3/3-6.md
+          - 3-7. 株式会社の構造とコーポレートガバナンス（会社法Ⅰ）: finance-law-math/3/3-7.md
+          - 3-8. 会社の計算・財源規制と資金調達（会社法Ⅱ）: finance-law-math/3/3-8.md
+          - 3-9. 行政法の基礎構造——許認可・通達・計画・調査: finance-law-math/3/3-9.md
+      - 第4部 租税法とタックスプランニング:
+          - 4-1. 租税法律主義と所得税の関数構造: finance-law-math/4/4-1.md
+          - 4-2. 10種類の所得と損益通算・繰越控除: finance-law-math/4/4-2.md
+          - 4-3. 所得控除・税額控除と確定申告・青色申告: finance-law-math/4/4-3.md
+          - 4-4. 法人税と「個人 vs 法人」の分岐点: finance-law-math/4/4-4.md
+          - 4-5. 消費税と金融・不動産の課税関係: finance-law-math/4/4-5.md
+      - 第5部 不動産・賃貸経営と公法規制:
+          - 5-1. 不動産登記・権利調査と「一物四価」・鑑定評価: finance-law-math/5/5-1.md
+          - 5-2. 土地の公法規制（都市計画法・建築基準法・農地法・区分所有法）: finance-law-math/5/5-2.md
+          - 5-3. 不動産売買の法務と宅建業法: finance-law-math/5/5-3.md
+          - 5-4. 賃貸借の法務と借地借家法: finance-law-math/5/5-4.md
+          - 5-5. 賃貸管理の実務・トラブル対応・建物保全: finance-law-math/5/5-5.md
+          - 5-6. 不動産の税務・有効活用・投資の数理: finance-law-math/5/5-6.md
+      - 第6部 家族法・相続・養子縁組と事業承継:
+          - 6-1. 民法の相続制度——法定相続・遺言・遺留分: finance-law-math/6/6-1.md
+          - 6-2. 遺産分割の法務・共有不動産・成年後見と家族信託: finance-law-math/6/6-2.md
+          - 6-3. 現代の家族法——婚姻・離婚・親子関係と養子縁組: finance-law-math/6/6-3.md
+          - 6-4. 贈与の法務と贈与税の仕組み: finance-law-math/6/6-4.md
+          - 6-5. 相続税の計算アルゴリズムと不動産評価: finance-law-math/6/6-5.md
+          - 6-6. 非上場株式の評価と事業承継対策: finance-law-math/6/6-6.md
+      - 第7部 社会保障・生命保険・年金の制度と数理:
+          - 7-1. 社会保険と公的年金の制度設計: finance-law-math/7/7-1.md
+          - 7-2. 生命表・生存モデルとマルコフ過程の数理: finance-law-math/7/7-2.md
+          - 7-3. 生命保険の保険料と責任準備金の数理: finance-law-math/7/7-3.md
+          - 7-4. 生命保険の実務・税務・収益性分析: finance-law-math/7/7-4.md
+          - 7-5. 年金数理と財政方式（公的年金・企業年金）: finance-law-math/7/7-5.md
+      - 第8部 損害保険・危険理論・リスク管理の数理:
+          - 8-1. 損害保険の制度と法的構造: finance-law-math/8/8-1.md
+          - 8-2. ポアソン過程・クレーム頻度と複合ポアソン分布: finance-law-math/8/8-2.md
+          - 8-3. 一般化線形モデル（GLM）による料率算定とベイズ信頼性理論: finance-law-math/8/8-3.md
+          - 8-4. 支払備金とロスディベロップメント: finance-law-math/8/8-4.md
+          - 8-5. 危険理論（破産確率）と再保険の数理: finance-law-math/8/8-5.md
+          - 8-6. 極値理論・コピュラ・リスク尺度とERM: finance-law-math/8/8-6.md
+      - 第9部 資産評価・ポートフォリオ・デリバティブ:
+          - 9-1. 債券数理と金利の期間構造: finance-law-math/9/9-1.md
+          - 9-2. 株式価値評価とコーポレート・ファイナンス: finance-law-math/9/9-2.md
+          - 9-3. 現代ポートフォリオ理論・CAPM・マルチファクター: finance-law-math/9/9-3.md
+          - 9-4. 無裁定価格理論と先渡・先物・スワップ: finance-law-math/9/9-4.md
+          - 9-5. 金融時系列・ブラウン運動と伊藤の補題の直感: finance-law-math/9/9-5.md
+          - 9-6. オプション価格理論——二項モデルからブラック＝ショールズへ: finance-law-math/9/9-6.md
+          - 9-7. 確率金利モデルと信用リスク・証券化商品: finance-law-math/9/9-7.md
+          - 9-8. 市場効率性・行動ファイナンスとクオンツへの展望: finance-law-math/9/9-8.md
