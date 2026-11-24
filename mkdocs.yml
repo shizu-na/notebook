@@ -195,15 +195,16 @@ nav:
           - 6-3. 婚姻・離婚・事実婚と親子関係の法務: finance-law-math/6/6-3.md
           - 6-4. 普通養子縁組と特別養子縁組（法務・実務・税務）: finance-law-math/6/6-4.md
           - 6-5. 贈与の法務と贈与税の仕組み: finance-law-math/6/6-5.md
-          - 6-6. 相続税の計算アルゴリズムと不動産評価: finance-law-math/6/6-6.md
+          - 6-6. 相続税の計算アルゴリズムと財産評価: finance-law-math/6/6-6.md
           - 6-7. 非上場株式の評価と事業承継対策: finance-law-math/6/6-7.md
       - 第7部 社会保障・生命保険・年金の制度と数理:
           - 7-1. 社会保険と公的年金の制度設計: finance-law-math/7/7-1.md
           - 7-2. 生命表・生存関数と死力の数理: finance-law-math/7/7-2.md
-          - 7-3. マルコフ過程と多重状態モデル（健康・要介護・死亡）: finance-law-math/7/7-3.md
-          - 7-4. 生命保険の保険料と責任準備金の数理: finance-law-math/7/7-4.md
-          - 7-5. 生命保険の実務・税務・収益性分析: finance-law-math/7/7-5.md
-          - 7-6. 年金数理と財政方式（公的年金・企業年金）: finance-law-math/7/7-6.md
+          - 7-3. ノンパラメトリック生存解析とハザード推定: finance-law-math/7/7-3.md
+          - 7-4. マルコフ過程と多重状態モデル（健康・要介護・死亡）: finance-law-math/7/7-4.md
+          - 7-5. 生命保険の保険料と責任準備金の数理: finance-law-math/7/7-5.md
+          - 7-6. 生命保険の実務・税務・収益性分析: finance-law-math/7/7-6.md
+          - 7-7. 年金数理と財政方式（公的年金・企業年金）: finance-law-math/7/7-7.md
       - 第8部 損害保険・危険理論・リスク管理の数理:
           - 8-1. 損害保険の制度と法的構造: finance-law-math/8/8-1.md
           - 8-2. ポアソン過程とクレーム頻度・重尾分布（ガンマ・負の二項・パレート）: finance-law-math/8/8-2.md
@@ -212,15 +213,20 @@ nav:
           - 8-5. 経験料率の数理（ボーナス・マルスとベイズ信頼性理論）: finance-law-math/8/8-5.md
           - 8-6. 支払備金とロスディベロップメント: finance-law-math/8/8-6.md
           - 8-7. 危険理論（破産確率）と再保険の数理: finance-law-math/8/8-7.md
-          - 8-8. 極値理論・コピュラ・リスク尺度とERM: finance-law-math/8/8-8.md
+          - 8-8. 極値理論・コピュラ・リスク尺度と確率順序: finance-law-math/8/8-8.md
+          - 8-9. エンタープライズ・リスクマネジメント（ERM）と資本管理: finance-law-math/8/8-9.md
       - 第9部 資産評価・ポートフォリオ・デリバティブ:
           - 9-1. 債券数理と金利の期間構造: finance-law-math/9/9-1.md
           - 9-2. イールドカーブ変動と主成分分析（PCA）: finance-law-math/9/9-2.md
-          - 9-3. 株式価値評価とコーポレート・ファイナンス: finance-law-math/9/9-3.md
-          - 9-4. 現代ポートフォリオ理論・CAPM・マルチファクター: finance-law-math/9/9-4.md
-          - 9-5. 無裁定価格理論と先渡・先物・スワップ: finance-law-math/9/9-5.md
-          - 9-6. 金融時系列・ブラウン運動と伊藤の補題の直感: finance-law-math/9/9-6.md
-          - 9-7. オプション価格理論（二項モデルからブラック＝ショールズへ）: finance-law-math/9/9-7.md
-          - 9-8. 確率金利モデルとオプション内蔵債券: finance-law-math/9/9-8.md
-          - 9-9. 信用リスク（構造型・誘導型）と証券化商品: finance-law-math/9/9-9.md
-          - 9-10. 市場効率性・行動ファイナンスとクオンツへの展望: finance-law-math/9/9-10.md
+          - 9-3. 株式価値評価（DDM・DCF・残余利益モデル・マルチプル）: finance-law-math/9/9-3.md
+          - 9-4. コーポレート・ファイナンス（資本構成・WACC/APV・ペイアウト・リアルオプション）: finance-law-math/9/9-4.md
+          - 9-5. 現代ポートフォリオ理論・CAPM・マルチファクター: finance-law-math/9/9-5.md
+          - 9-6. ライフサイクル投資・アセットアロケーションとオルタナティブ投資: finance-law-math/9/9-6.md
+          - 9-7. 無裁定価格理論と先渡・先物・スワップ: finance-law-math/9/9-7.md
+          - 9-8. 金融時系列分析（定常性・AR/MA・GARCH・共和分）: finance-law-math/9/9-8.md
+          - 9-9. ブラウン運動と伊藤の補題の直感: finance-law-math/9/9-9.md
+          - 9-10. オプション価格理論（二項モデルからブラック＝ショールズへ）: finance-law-math/9/9-10.md
+          - 9-11. 確率金利モデルとオプション内蔵債券: finance-law-math/9/9-11.md
+          - 9-12. 信用リスク（構造型・誘導型）と証券化商品: finance-law-math/9/9-12.md
+          - 9-13. 市場効率性と行動ファイナンス: finance-law-math/9/9-13.md
+          - 9-14. 市場マイクロストラクチャー・資金管理とクオンツへの展望: finance-law-math/9/9-14.md
