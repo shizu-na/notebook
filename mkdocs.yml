@@ -144,10 +144,11 @@ nav:
           - 0-3. 確率変数・期待値・分散と離散分布: finance-law-math/0/0-3.md
           - 0-4. 連続分布と正規分布・対数正規分布: finance-law-math/0/0-4.md
           - 0-5. 積率母関数と2つの極限定理（大数の法則・中心極限定理）: finance-law-math/0/0-5.md
-          - 0-6. データからの推測（最尤推定・信頼区間・仮説検定）: finance-law-math/0/0-6.md
-          - 0-7. 回帰分析（最小二乗法の幾何学とモデルの限界）: finance-law-math/0/0-7.md
-          - 0-8. 数理最適化（線形計画法・ラグランジュ乗数法・KKT条件）: finance-law-math/0/0-8.md
-          - 0-9. モンテカルロ・シミュレーションとブートストラップ法: finance-law-math/0/0-9.md
+          - 0-6. 点推定と標本分布（最尤推定・χ²・t・F 分布）: finance-law-math/0/0-6.md
+          - 0-7. 区間推定と仮説検定（信頼区間・p 値・多重検定）: finance-law-math/0/0-7.md
+          - 0-8. 回帰分析（最小二乗法の幾何学とモデルの限界）: finance-law-math/0/0-8.md
+          - 0-9. 数理最適化（線形計画法・ラグランジュ乗数法・KKT条件）: finance-law-math/0/0-9.md
+          - 0-10. モンテカルロ・シミュレーションとブートストラップ法: finance-law-math/0/0-10.md
       - 第1部 経済と市場の仕組み:
           - 1-1. 消費者行動・生産者行動と市場均衡（ミクロ経済学）: finance-law-math/1/1-1.md
           - 1-2. 市場の失敗と情報の非対称性: finance-law-math/1/1-2.md
@@ -158,9 +159,10 @@ nav:
           - 2-1. 複式簿記の原理・簿記一巡と代数構造: finance-law-math/2/2-1.md
           - 2-2. 決済・債権・商品売買の会計（2027年新基準対応）: finance-law-math/2/2-2.md
           - 2-3. 固定資産・減価償却と新リース会計基準: finance-law-math/2/2-3.md
-          - 2-4. 発生主義・決算整理・引当金・税効果会計: finance-law-math/2/2-4.md
-          - 2-5. キャッシュ・フロー計算書と財務分析: finance-law-math/2/2-5.md
-          - 2-6. 連結会計・外貨建取引と企業結合: finance-law-math/2/2-6.md
+          - 2-4. 金融商品（有価証券）・純資産と包括利益の会計: finance-law-math/2/2-4.md
+          - 2-5. 発生主義・決算整理・引当金・税効果会計: finance-law-math/2/2-5.md
+          - 2-6. キャッシュ・フロー計算書と財務分析: finance-law-math/2/2-6.md
+          - 2-7. 連結会計・外貨建取引と企業結合: finance-law-math/2/2-7.md
       - 第3部 法学の基礎:
           - 3-1. 法体系・民法総則・権利義務の構造: finance-law-math/3/3-1.md
           - 3-2. 契約・債権債務と債務不履行・不法行為: finance-law-math/3/3-2.md
