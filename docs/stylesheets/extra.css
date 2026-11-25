@@ -1,0 +1,30 @@
+/* 数式の横はみ出し対策（MkDocs Material + MathJax 3）
+ * - ディスプレイ数式（$$...$$）は常に数式ボックス内だけで横スクロールさせる
+ * - 親要素より幅広になったインライン数式（$...$）のみ、mathjax.js が
+ *   .math-overflow を付与して局所スクロール化（通常インライン数式のベースラインは維持）
+ */
+
+.md-typeset div.arithmatex {
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  padding: 0.25em 0;
+}
+
+.md-typeset div.arithmatex mjx-container[display="true"] {
+  margin: 0.6em 0;
+}
+
+.md-typeset span.arithmatex.math-overflow {
+  display: inline-block;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+  padding: 0.15em 0;
+}
+
+/* モバイルや狭い画面で本文ブロック自体が横幅を押し広げないための安全弁 */
+.md-typeset__table {
+  max-width: 100%;
+}
