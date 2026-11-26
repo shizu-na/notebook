@@ -174,7 +174,7 @@ def process_file(path: Path, check_only: bool = False) -> tuple[int, int, int, i
     updated, list_blank_count = ensure_blank_lines_before_lists(updated)
 
     if not check_only and updated != original:
-        path.write_text(updated, encoding="utf-8")
+        path.write_text(updated, encoding="utf-8", newline="\n")
 
     # 5. ** の片割れチェック
     warnings = find_unmatched_bold_lines(updated)
