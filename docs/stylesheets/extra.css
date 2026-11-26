@@ -29,6 +29,12 @@
   max-width: 100%;
 }
 
+/* MkDocs Material の h5 大文字化による MathJax 数式の文字化け・重なり防止 */
+.md-typeset h5,
+.md-typeset mjx-container {
+  text-transform: none;
+}
+
 /* ブラウザ内 Python 実行 UI（Pyodide） */
 .md-typeset .py-runner {
   margin: -0.6em 0 1.2em;
