@@ -89,6 +89,26 @@
   background-color: #c99d66;
 }
 
+/* ライト／ダークモード切替時のスムーズなフェード遷移 */
+@media (prefers-reduced-motion: no-preference) {
+  body,
+  .md-header,
+  .md-tabs,
+  .md-main,
+  .md-footer,
+  .md-nav,
+  .md-typeset blockquote,
+  .md-typeset details,
+  .md-typeset details > summary,
+  .md-typeset code,
+  .md-typeset pre {
+    transition:
+      background-color 0.32s ease,
+      color 0.32s ease,
+      border-color 0.32s ease;
+  }
+}
+
 /* ブラウザ内 Python 実行 UI（Pyodide） */
 .md-typeset .py-runner {
   margin: -0.6em 0 1.2em;
