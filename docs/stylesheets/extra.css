@@ -45,7 +45,8 @@
 }
 
 /* ダークモード（slate）を目に優しい暖色寄りチャコール×生成り文字へ統一 */
-[data-md-color-scheme="slate"] {
+[data-md-color-scheme="slate"],
+[data-md-color-scheme="slate"][data-md-color-primary] {
   --md-default-bg-color: #1f1e1c;
   --md-default-bg-color--light: rgba(31, 30, 28, 0.72);
   --md-default-bg-color--lighter: rgba(31, 30, 28, 0.32);
@@ -70,6 +71,22 @@
 [data-md-color-scheme="slate"] .md-typeset blockquote {
   border-left-color: rgba(201, 157, 102, 0.72);
   background-color: rgba(201, 157, 102, 0.06);
+}
+
+[data-md-color-scheme="slate"] .md-typeset details,
+[data-md-color-scheme="slate"] .md-typeset .admonition {
+  border-color: rgba(201, 157, 102, 0.55);
+  background-color: #252320;
+}
+
+[data-md-color-scheme="slate"] .md-typeset details > summary,
+[data-md-color-scheme="slate"] .md-typeset .admonition-title {
+  background-color: rgba(201, 157, 102, 0.12);
+}
+
+[data-md-color-scheme="slate"] .md-typeset details > summary::before,
+[data-md-color-scheme="slate"] .md-typeset .admonition-title::before {
+  background-color: #c99d66;
 }
 
 /* ブラウザ内 Python 実行 UI（Pyodide） */
