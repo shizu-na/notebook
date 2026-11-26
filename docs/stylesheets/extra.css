@@ -35,6 +35,15 @@
   text-transform: none;
 }
 
+/* 引用ブロック（定理・定義・コラム・確認の問い）の視認性・枠デザイン改善 */
+.md-typeset blockquote {
+  color: var(--md-default-fg-color);
+  border-left: 0.22rem solid rgba(99, 102, 241, 0.65);
+  background-color: rgba(99, 102, 241, 0.045);
+  padding: 0.55em 0.95em;
+  border-radius: 0 0.25rem 0.25rem 0;
+}
+
 /* ブラウザ内 Python 実行 UI（Pyodide） */
 .md-typeset .py-runner {
   margin: -0.6em 0 1.2em;
