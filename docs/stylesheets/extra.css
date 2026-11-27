@@ -197,3 +197,55 @@
   border-left-color: #ef4444;
   color: #ef4444;
 }
+
+/* 左右サイドバー（ナビゲーション・目次）の個別開閉 UI（PC表示向け） */
+.sidebar-toggle-group {
+  display: none;
+  align-items: center;
+  gap: 0.1rem;
+  margin-right: 0.15rem;
+}
+
+.sidebar-toggle-btn {
+  border-radius: 0.2rem;
+  opacity: 0.85;
+  transition: opacity 0.15s ease, background-color 0.15s ease;
+}
+
+.sidebar-toggle-btn:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.sidebar-toggle-btn.is-collapsed {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.22);
+}
+
+.sidebar-toggle-nav,
+.sidebar-toggle-toc {
+  display: none;
+}
+
+/* 右サイドバー（目次）は 60em (960px) 以上で表示される */
+@media screen and (min-width: 60em) {
+  .sidebar-toggle-group {
+    display: inline-flex;
+  }
+  .sidebar-toggle-toc {
+    display: inline-flex;
+  }
+  html.hide-toc-sidebar .md-sidebar--secondary {
+    display: none;
+  }
+}
+
+/* 左サイドバー（ナビ）は 76.25em (1220px) 以上で固定表示される */
+@media screen and (min-width: 76.25em) {
+  .sidebar-toggle-nav {
+    display: inline-flex;
+  }
+  html.hide-nav-sidebar .md-sidebar--primary {
+    display: none;
+  }
+}
