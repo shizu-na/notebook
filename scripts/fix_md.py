@@ -31,8 +31,10 @@ EXCLUDE_DIRS = {"javascripts", "stylesheets", "assets", "images"}
 
 # 単一行のディスプレイ数式: 任意の `> ` プレフィックス + $$...$$
 SINGLE_LINE_DISPLAY_MATH_RE = re.compile(r"^(\s*(?:>\s*)*)\$\$(.+)\$\$\s*$")
-# リスト項目の行: 任意の `> ` プレフィックス + インデント + (`* ` or `- ` or `1. `)
-LIST_ITEM_RE = re.compile(r"^((?:>\s*)*)(\s*)(?:[\*\-]\s+|\d+\.\s+)")
+# リスト項目の行: 任意の `> ` プレフィックス（各 `>` の直後は高々1スペース） + インデント + (`* ` or `- ` or `1. `)
+LIST_ITEM_RE = re.compile(r"^((?:> ?)*)(\s*)(?:[\*\-]\s+|\d+\.\s+)")
+# 引用プレフィックス除去用（コードフェンス判定で使用）
+QUOTE_PREFIX_RE = re.compile(r"^(?:>\s*)*")
 # 数式内の ** (例: V^{**}) を除外するためのパターン
 MATH_SPAN_RE = re.compile(r"\$\$[\s\S]*?\$\$|\$[^$\n]+\$")
 CODE_SPAN_RE = re.compile(r"`[^`\n]+`")
@@ -95,7 +97,7 @@ def ensure_blank_lines_before_lists(text: str) -> tuple[str, int]:
     in_code_block = False
 
     for line in lines:
-        if line.strip().startswith("```"):
+        if QUOTE_PREFIX_RE.sub("", line).strip().startswith("```"):
             in_code_block = not in_code_block
             out.append(line)
             continue
@@ -139,7 +141,7 @@ def find_unmatched_bold_lines(text: str) -> list[tuple[int, str]]:
     in_code_block = False
 
     for idx, line in enumerate(text.splitlines(), start=1):
-        if line.strip().startswith("```"):
+        if QUOTE_PREFIX_RE.sub("", line).strip().startswith("```"):
             in_code_block = not in_code_block
             continue
         if in_code_block:
