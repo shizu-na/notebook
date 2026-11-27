@@ -43,12 +43,15 @@ def iter_md_files(themes: list[str]) -> list[Path]:
         return sorted(DOCS_DIR.rglob("*.md"))
     files: list[Path] = []
     for theme in themes:
-        target = DOCS_DIR / theme
-        if target.is_file():
-            files.append(target)
-        elif target.is_dir():
-            files.extend(sorted(target.rglob("*.md")))
-    return files
+        candidates = [DOCS_DIR / theme, ROOT_DIR / theme, Path(theme)]
+        for target in candidates:
+            if target.is_file():
+                files.append(target)
+                break
+            elif target.is_dir():
+                files.extend(sorted(target.rglob("*.md")))
+                break
+    return sorted(dict.fromkeys(files))
 
 
 def ensure_blank_lines_around_display_math(text: str) -> tuple[str, int]:
