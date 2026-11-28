@@ -292,6 +292,7 @@ nav:
           - 5-7. アクセス制御モデル（ACL・ケイパビリティ・Unix権限と setuid）: cs-systems/5/5-7.md
           - 5-8. メモリ破壊攻撃と多層防御（BOF・ROP・ASLR/NX/カナリア）: cs-systems/5/5-8.md
           - 5-9. 静的解析と形式手法の入口（モデル検査・SAT/SMT・有界モデル検査）: cs-systems/5/5-9.md
+          - 5-10. 非同期実行モデルとイベントループ（スレッド・コルーチン・M:Nスケジューリング）: cs-systems/5/5-10.md
       - 第6部 ネットワークの基盤：リンク・IPとルーティング:
           - 6-1. 回線交換 vs パケット交換とプロトコルの階層化・カプセル化: cs-systems/6/6-1.md
           - 6-2. 通信路容量（Shannon-Hartley）とフレーミング・誤り制御（ハミング符号・CRC）: cs-systems/6/6-2.md
@@ -309,6 +310,10 @@ nav:
           - 7-5. アプリケーションプロトコル（DNS・HTTP・電子メール・SSH）: cs-systems/7/7-5.md
           - 7-6. 暗号技術の基礎（共通鍵AES・暗号モード・公開鍵RSA・ハイブリッド暗号）: cs-systems/7/7-6.md
           - 7-7. 認証・鍵交換とプロトコル保護（署名・DH・Kerberos・TLS/HTTPS・IPsec）: cs-systems/7/7-7.md
+          - 7-8. 情報理論の基礎と可逆圧縮（エントロピー・ハフマン符号・LZ77とDEFLATE）: cs-systems/7/7-8.md
+          - 7-9. 信号処理の基礎と非可逆圧縮（標本化定理・DCT・JPEG・動画圧縮）: cs-systems/7/7-9.md
+          - 7-10. Web認証・認可の仕組み（パスワード・セッション/JWT・OAuth/OIDC・パスキー）: cs-systems/7/7-10.md
+          - 7-11. Webアプリケーションの脆弱性とブラウザ保護機構（SOP・CORS・XSS・CSRF）: cs-systems/7/7-11.md
       - 第8部 関係データモデル・正規化とSQL:
           - 8-1. ファイルベースの限界とDBMSの役割・データモデル: cs-systems/8/8-1.md
           - 8-2. リレーショナルデータモデルと関係代数: cs-systems/8/8-2.md
@@ -326,4 +331,8 @@ nav:
           - 9-6. 悲観的並行制御（2PL・ロッキング定理・デッドロック・隔離性レベル）: cs-systems/9/9-6.md
           - 9-7. 時刻印・楽観的・多版並行制御（TO・OCC・MVCCとスナップショット）: cs-systems/9/9-7.md
           - 9-8. 障害回復（DO-UNDO-REDO・WAL・page LSNとCLRのべき等性・チェックポイント）: cs-systems/9/9-8.md
-          - 9-9. 分散システムへの展望と全10部の総括（2相コミット・CAP定理の入口）: cs-systems/9/9-9.md
+          - 9-9. 分散データベースの入口（シャーディング・レプリケーション・2相コミット）: cs-systems/9/9-9.md
+      - 第10部 仮想化・コンテナとWebインフラ:
+          - 10-1. ハードウェア仮想化とハイパーバイザ（VT-x・2段ページテーブル・VirtIO）: cs-systems/10/10-1.md
+          - 10-2. コンテナの内部構造（Namespace・cgroup・OverlayFS）: cs-systems/10/10-2.md
+          - 10-3. Webインフラ構成要素（ロードバランサ・リバースプロキシ・CDN）: cs-systems/10/10-3.md
